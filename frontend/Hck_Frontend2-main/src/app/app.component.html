@@ -1,0 +1,163 @@
+
+<header class="eco-header">
+  <h1>Eco Inventory Management - Sustainable Office, Greener Planet</h1>
+</header>
+<div *ngIf="userRole === 'user' || userRole === 'admin'">
+  <nav class="main-nav">
+    <a *ngIf="userRole === 'user' || userRole === 'admin'" routerLink="/inventory-tracking" routerLinkActive="active" title="Inventory Tracking">
+      <span class="nav-icon" aria-label="Inventory Tracking">📦</span>
+    </a>
+    <a *ngIf="userRole === 'user'" routerLink="/optimized-ordering" routerLinkActive="active" title="Optimized Ordering">
+      <span class="nav-icon" aria-label="Optimized Ordering">🛒</span>
+    </a>
+    <a *ngIf="userRole === 'admin'" routerLink="/cost-savings" routerLinkActive="active" title="Cost Savings">
+      <span class="nav-icon" aria-label="Cost Savings">💰</span>
+    </a>
+    <a *ngIf="userRole === 'admin'" routerLink="/reporting" routerLinkActive="active" title="Reporting">
+      <span class="nav-icon" aria-label="Reporting">📊</span>
+    </a>
+    <a *ngIf="userRole === 'admin'" routerLink="/initial-stock" routerLinkActive="active" title="Initial Stock">
+      <span class="nav-icon" aria-label="Initial Stock">📝</span>
+    </a>
+    <a *ngIf="userRole === 'admin'" routerLink="/vendor-request" routerLinkActive="active" title="Vendor Request">
+      <span class="nav-icon" aria-label="Vendor Request">🏢</span>
+    </a>
+    <a *ngIf="userRole === 'admin'" routerLink="/admin-approval" routerLinkActive="active" title="Admin Approval">
+      <span class="nav-icon" aria-label="Admin Approval">✅</span>
+    </a>
+    <button style="margin-left:auto;" class="logout-btn" (click)="logout()">Logout</button>
+  </nav>
+</div>
+<!-- <div *ngIf="!userRole">
+  <nav class="main-nav">
+    <a (click)="showLoginInfo()" title="Inventory Tracking">
+      <span class="nav-icon" aria-label="Inventory Tracking">📦</span>
+    </a>
+    <a (click)="showLoginInfo()" title="Optimized Ordering">
+      <span class="nav-icon" aria-label="Optimized Ordering">🛒</span>
+    </a>
+    <a (click)="showLoginInfo()" title="Cost Savings">
+      <span class="nav-icon" aria-label="Cost Savings">💰</span>
+    </a>
+    <a (click)="showLoginInfo()" title="Reporting">
+      <span class="nav-icon" aria-label="Reporting">📊</span>
+    </a>
+    <a (click)="showLoginInfo()" title="Initial Stock">
+      <span class="nav-icon" aria-label="Initial Stock">📝</span>
+    </a>
+    <a (click)="showLoginInfo()" title="Vendor Request">
+      <span class="nav-icon" aria-label="Vendor Request">🏢</span>
+    </a>
+    <a (click)="showLoginInfo()" title="Admin Approval">
+      <span class="nav-icon" aria-label="Admin Approval">✅</span>
+    </a>
+  </nav>
+  <div class="login-prompt">Please log in to access the system features.</div>
+</div> -->
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<style>
+  :host {
+    --bright-blue: oklch(51.01% 0.274 263.83);
+    --electric-violet: oklch(53.18% 0.28 296.97);
+    --french-violet: oklch(47.66% 0.246 305.88);
+    --vivid-pink: oklch(69.02% 0.277 332.77);
+    --hot-red: oklch(61.42% 0.238 15.34);
+    --orange-red: oklch(63.32% 0.24 31.68);
+
+    --gray-900: oklch(19.37% 0.006 300.98);
+    --gray-700: oklch(36.98% 0.014 302.71);
+    --gray-400: oklch(70.9% 0.015 304.04);
+
+    --red-to-pink-to-purple-vertical-gradient: linear-gradient(
+      180deg,
+      var(--orange-red) 0%,
+      var(--vivid-pink) 50%,
+      var(--electric-violet) 100%
+    );
+
+    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(
+      90deg,
+      var(--orange-red) 0%,
+      var(--vivid-pink) 50%,
+      var(--electric-violet) 100%
+    );
+
+    --pill-accent: var(--bright-blue);
+
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .eco-header {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .eco-header h1 {
+    color: #2e7d32;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .main-nav {
+    display: flex;
+    gap: 1.5rem;
+    background: #e3f2fd;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    margin: 1.5rem auto 2rem auto;
+    max-width: 900px;
+    justify-content: center;
+  }
+  .main-nav a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .main-nav a.active, .main-nav a:hover {
+    background: #1976d2;
+    color: #fff;
+  }
+  .nav-icon {
+    font-size: 1.7rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  @media screen and (max-width: 650px) {
+    .main-nav {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+  }
+</style>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+<router-outlet />

@@ -1,0 +1,12 @@
+<div class="login-container">
+  <h2 class="eco-title">Login</h2>
+  <form class="login-form" (ngSubmit)="onLogin()">
+    <label for="username">Username</label>
+    <input id="username" type="text" class="login-input" placeholder="Enter your username" [(ngModel)]="username" name="username" />
+
+    <label for="password">Password</label>
+    <input id="password" type="password" class="login-input" placeholder="Enter your password" [(ngModel)]="password" name="password" />
+
+    <button type="button" class="login-btn" (click)="onLogin()">Login</button>
+  </form>
+</div>

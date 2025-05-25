@@ -1,0 +1,6 @@
+[
+  { "id": 1, "name": "Paper", "quantity": 120 },
+  { "id": 2, "name": "Stationery", "quantity": 80 },
+  { "id": 3, "name": "Coffee Pods", "quantity": 200 },
+  { "id": 4, "name": "Cleaning Supplies", "quantity": 50 }
+]

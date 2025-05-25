@@ -1,0 +1,208 @@
+.reporting {
+  background: #f6fff6;
+  border-radius: 12px;
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  box-shadow: 0 2px 16px #e0e0e0;
+  max-width: 850px;
+  margin: 2.5rem auto;
+}
+.reporting h2 {
+  color: #2e7d32;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.reporting .ai-suggestion {
+  margin-top: 1rem;
+  background: #e3f2fd;
+  padding: 0.75rem;
+  border-left: 4px solid #1976d2;
+  border-radius: 4px;
+}
+.location-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #bdbdbd;
+  border-radius: 10px;
+  background: #f9f9f9;
+  padding: 1.5rem 2rem 1.2rem 2rem;
+  box-shadow: 0 1px 6px #e0e0e0;
+}
+
+.location-form label {
+  font-weight: 500;
+  color: #1976d2;
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.rich-dropdown {
+  width: 100%;
+  min-width: 180px;
+  max-width: 320px;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  border: 1.5px solid #bdbdbd;
+  background: linear-gradient(90deg, #e3f2fd 0%, #fff 100%);
+  font-size: 1.1rem;
+  color: #1976d2;
+  margin-top: 0;
+  box-shadow: 0 1px 4px #e0e0e0;
+}
+
+.date-range-container, .building-details-container, .download-container {
+  border: 2px solid #bdbdbd;
+  border-radius: 10px;
+  background: #f9f9f9;
+  margin-bottom: 1.5rem;
+  padding: 1.2rem 2rem 1.2rem 2rem;
+  box-shadow: 0 1px 6px #e0e0e0;
+}
+
+.date-range-container {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.building-details-container {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.download-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
+.download-actions {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.download-btn {
+  background: none;
+  border: none;
+  border-radius: 0;
+  width: auto;
+  height: auto;
+  display: inline;
+  align-items: unset;
+  justify-content: unset;
+  cursor: pointer;
+  position: relative;
+  font-size: 2rem;
+  color: inherit;
+  box-shadow: none;
+  padding: 0;
+}
+.date-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.report-container {
+  border: 2px solid #bdbdbd;
+  border-radius: 10px;
+  background: #f9f9f9;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 700px;
+  padding: 1.5rem 2.5rem 1.5rem 2.5rem;
+  box-shadow: 0 1px 6px #e0e0e0;
+}
+.report-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1976d2;
+  text-align: left;
+  margin-bottom: 0.3rem;
+}
+.report-title-underline {
+  width: 100%;
+  height: 3px;
+  background: #1976d2;
+  margin-bottom: 1.2rem;
+  border-radius: 2px;
+}
+.report-actions-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+.report-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.section-heading {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2e7d32;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+  text-align: left;
+}
+
+.download-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1976d2;
+  margin-bottom: 0.7rem;
+  letter-spacing: 0.5px;
+}
+.rich-dropdown:focus {
+  border: 1.5px solid #388e3c;
+  outline: none;
+  box-shadow: 0 0 0 2px #c8e6c9;
+}
+.rich-dropdown option {
+  padding: 0.4rem 0.7rem;
+  font-size: 1rem;
+  color: #1976d2;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+.submit-btn {
+  margin-top: 1.5rem;
+  background: #388e3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.submit-btn:hover {
+  background: #1976d2;
+}
+@media screen and (max-width: 650px) {
+  .reporting {
+    padding: 0.7rem;
+  }
+  .location-form {
+    max-width: 100%;
+  }
+}

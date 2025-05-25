@@ -1,0 +1,30 @@
+<div class="initial-stock">
+  <h2 style="text-align:center; font-size:2.1rem; color:#1976d2; font-weight:700; margin-bottom:2.2rem;">Initial Stock Overview</h2>
+  <div class="stock-table-container">
+    <table style="width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 2px 8px #e0e0e0; border-radius: 10px; overflow: hidden;">
+      <thead>
+        <tr style="background: #e3f2fd;">
+          <th style="padding: 0.7rem; border: 1px solid #bdbdbd;">S.No</th>
+          <th style="padding: 0.7rem; border: 1px solid #bdbdbd;">Item Name</th>
+          <th style="padding: 0.7rem; border: 1px solid #bdbdbd;">Overall Available Stock</th>
+          <th style="padding: 0.7rem; border: 1px solid #bdbdbd;">Price per Unit</th>
+          <th style="padding: 0.7rem; border: 1px solid #bdbdbd;">Total Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items; let i = index" style="transition: background 0.2s;">
+          <td style="padding: 0.7rem; border: 1px solid #bdbdbd; text-align: center;">{{ i + 1 }}</td>
+          <td style="padding: 0.7rem; border: 1px solid #bdbdbd;">{{ item.Name }}</td>
+          <td style="padding: 0.7rem; border: 1px solid #bdbdbd; text-align: right;">{{ item.Stock }}</td>
+          <td style="padding: 0.7rem; border: 1px solid #bdbdbd; text-align: right;">₹{{ item.price }}</td>
+          <td style="padding: 0.7rem; border: 1px solid #bdbdbd; text-align: right; font-weight: 600; color: #388e3c;">₹{{ item.Stock * item.price }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="loading" style="text-align:center; margin-top:1.5rem; color:#1976d2; font-weight:600;">Loading...</div>
+    <div *ngIf="error" style="text-align:center; margin-top:1.5rem; color:#d32f2f; font-weight:600;">{{ error }}</div>
+  </div>
+  <div class="ai-suggestion" style="margin-top:2rem;">
+    <strong>AI Suggestion:</strong> Double-check initial entries to ensure accurate future tracking.
+  </div>
+</div>

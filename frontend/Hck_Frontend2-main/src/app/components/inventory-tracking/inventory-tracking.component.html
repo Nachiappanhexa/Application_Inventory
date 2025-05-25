@@ -1,0 +1,42 @@
+<div class="eco-inventory-request">
+  <h1 class="eco-title">Inventory Stock Details</h1>
+  <form class="location-form">
+    <label>
+      Block:
+      <select class="rich-dropdown" [(ngModel)]="selectedBlock" name="block" (change)="onSelectionChange()">
+        <option value="">Select Block</option>
+        <option *ngFor="let block of blocks" [value]="block">{{ block }}</option>
+      </select>
+    </label>
+    <br />
+    <label>
+      Floor:
+      <select class="rich-dropdown" [(ngModel)]="selectedFloor" name="floor" (change)="onSelectionChange()">
+        <option value="">Select Floor</option>
+        <option *ngFor="let floor of floors" [value]="floor">{{ floor }}</option>
+      </select>
+    </label>
+    <br />
+    <label>
+      Wing:
+      <select class="rich-dropdown" [(ngModel)]="selectedWing" name="wing" (change)="onSelectionChange()">
+        <option value="">Select Wing</option>
+        <option *ngFor="let wing of wings" [value]="wing">{{ wing }}</option>
+      </select>
+    </label>
+  </form>
+  <h2>Supply Items</h2>
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error" class="default-span">{{ error }}</div>
+  <ul class="supply-list" *ngIf="!loading && items.length">
+    <li *ngFor="let item of items">
+      <label>{{ item.Name }}:</label>
+      <div class="qty-control">
+        <button type="button" class="qty-btn" aria-label="Decrease" (click)="decrease(item)">-</button>
+        <input type="number" min="0" [value]="item.units" class="qty-input" readonly />
+        <span class="unit-label">units</span>
+      </div>
+    </li>
+  </ul>
+  <button type="button" class="submit-btn" [disabled]="loading || !items.length" (click)="updateAll()">Update</button>
+</div>

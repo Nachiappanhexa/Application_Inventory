@@ -1,0 +1,203 @@
+/* Rich, modern design for admin approval page */
+.admin-approval {
+  background: #f6fff6;
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 2px 8px #e0e0e0;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+.eco-title {
+  color: #2e7d32;
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.approval-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.approval-list li {
+  background: #e8f5e9;
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 1px 4px #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  position: relative;
+}
+.item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.item-name {
+  color: #1976d2;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.tick-btn {
+  background: #e3f2fd;
+  border: none;
+  color: #1976d2;
+  font-size: 1.3rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tick-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.item-details {
+  margin-top: 0.7rem;
+  background: #fff;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  box-shadow: 0 1px 4px #e0e0e0;
+}
+
+.item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1.2rem 0 1.2rem 0;
+  background: #e3f2fd;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 1px 4px #b3c6e0;
+}
+
+.item-list-header {
+  display: flex;
+  font-weight: 700;
+  color: #1976d2;
+  font-size: 1.08rem;
+  border-bottom: 2px solid #bbdefb;
+  padding-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
+  gap: 1.5rem;
+}
+.item-list-header .header {
+  flex: 1 1 0;
+  min-width: 120px;
+  text-align: left;
+}
+.item-list-header .item-name.header {
+  min-width: 160px;
+}
+.item-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #e3e3e3;
+}
+.item-detail-row:last-child {
+  border-bottom: none;
+}
+.item-detail-row .item-name {
+  flex: 1 1 0;
+  min-width: 160px;
+}
+.item-detail-row .requested,
+.item-detail-row .stock {
+  flex: 1 1 0;
+  min-width: 120px;
+  text-align: left;
+  font-weight: 500;
+}
+
+.item-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #bbdefb;
+  font-size: 1.08rem;
+}
+.item-detail-row:last-child {
+  border-bottom: none;
+}
+.item-detail-row .item-name {
+  font-weight: 600;
+  min-width: 120px;
+  color: #0277bd;
+}
+.item-detail-row .requested {
+  color: #d84315;
+  font-weight: 500;
+}
+.item-detail-row .stock {
+  color: #388e3c;
+  font-weight: 500;
+}
+.stock, .requested {
+  font-weight: 600;
+  color: #388e3c;
+}
+.action-btns {
+  margin-top: 0.7rem;
+  display: flex;
+  gap: 1rem;
+}
+.approve-btn {
+  background: #388e3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.approve-btn:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+}
+.reject-btn {
+  background: #d32f2f;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.reject-btn:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+}
+.status {
+  margin-top: 0.7rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: right;
+}
+.status.approved {
+  color: #388e3c;
+}
+.status.rejected {
+  color: #d32f2f;
+}
+.approved {
+  border: 2px solid #388e3c;
+}
+.rejected {
+  border: 2px solid #d32f2f;
+}

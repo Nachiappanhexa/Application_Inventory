@@ -1,0 +1,40 @@
+<div class="admin-approval">
+  <h2 class="eco-title">Admin Approval</h2>
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error" class="status rejected">{{ error }}</div>
+  <ul class="approval-list">
+    <li *ngFor="let group of groupedRequests" [class.approved]="group.approved" [class.rejected]="group.rejected">
+      <div class="item-row">
+        <span class="item-name">
+          {{ group.buildingName }} | {{ group.floorName }} | {{ group.wingName }}
+        </span>
+        <button class="tick-btn" (click)="toggleDetails(group.buildingId)" [disabled]="group.approved || group.rejected">
+          <span *ngIf="!showDetails[group.buildingId]">✔️</span>
+          <span *ngIf="showDetails[group.buildingId]">🔽</span>
+        </button>
+      </div>
+      <div *ngIf="showDetails[group.buildingId]" class="item-details">
+        <div class="item-list">
+          <div class="item-list-header">
+            <span class="item-name header">Item</span>
+            <span class="header">Requested:</span>
+            <span class="header">Available in Building:</span>
+            <span class="header">Overall Stock:</span>
+          </div>
+          <div *ngFor="let item of group.items" class="item-detail-row">
+            <span class="item-name">{{ item.name }}</span>
+            <span class="requested">{{ item.requested }}</span>
+            <span class="stock">{{ item.currentStock }}</span>
+            <span class="stock">{{ item.overallStock }}</span>
+          </div>
+        </div>
+        <div class="action-btns">
+          <button class="approve-btn" (click)="approve(group)" [disabled]="group.approved || group.rejected">Approve</button>
+          <button class="reject-btn" (click)="reject(group)" [disabled]="group.rejected || group.approved">Reject</button>
+        </div>
+        <div *ngIf="group.approved" class="status approved">Approved</div>
+        <div *ngIf="group.rejected" class="status rejected">Rejected</div>
+      </div>
+    </li>
+  </ul>
+</div>

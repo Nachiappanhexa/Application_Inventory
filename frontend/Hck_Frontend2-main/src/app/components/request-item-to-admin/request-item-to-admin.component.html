@@ -1,0 +1,44 @@
+<div class="request-item-admin">
+  <h2 class="eco-title">Request Item to Admin</h2>
+  <form class="location-form">
+    <ul class="supply-list">
+      <li>
+        <label>Paper:</label>
+        <div class="qty-control">
+          <button type="button" class="qty-btn" aria-label="Decrease" (click)="decrease('paper')">-</button>
+          <input type="number" min="0" [value]="paper" class="qty-input" readonly />
+          <button type="button" class="qty-btn" aria-label="Increase" (click)="increase('paper')">+</button>
+          <span class="unit-label">packs</span>
+        </div>
+      </li>
+      <li>
+        <label>Stationery:</label>
+        <div class="qty-control">
+          <button type="button" class="qty-btn" aria-label="Decrease" (click)="decrease('stationery')">-</button>
+          <input type="number" min="0" [value]="stationery" class="qty-input" readonly />
+          <button type="button" class="qty-btn" aria-label="Increase" (click)="increase('stationery')">+</button>
+          <span class="unit-label">items</span>
+        </div>
+      </li>
+      <li>
+        <label>Coffee Pods:</label>
+        <div class="qty-control">
+          <button type="button" class="qty-btn" aria-label="Decrease" (click)="decrease('coffeePods')">-</button>
+          <input type="number" min="0" [value]="coffeePods" class="qty-input" readonly />
+          <button type="button" class="qty-btn" aria-label="Increase" (click)="increase('coffeePods')">+</button>
+          <span class="unit-label">pods</span>
+        </div>
+      </li>
+      <li>
+        <label>Cleaning Supplies:</label>
+        <div class="qty-control">
+          <button type="button" class="qty-btn" aria-label="Decrease" (click)="decrease('cleaningSupplies')">-</button>
+          <input type="number" min="0" [value]="cleaningSupplies" class="qty-input" readonly />
+          <button type="button" class="qty-btn" aria-label="Increase" (click)="increase('cleaningSupplies')">+</button>
+          <span class="unit-label">units</span>
+        </div>
+      </li>
+    </ul>
+    <button type="button" class="submit-btn">Submit Request</button>
+  </form>
+</div>

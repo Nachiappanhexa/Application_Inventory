@@ -1,0 +1,115 @@
+<div class="reporting">
+  <h2 style="text-align:center; font-size:2.1rem; color:#1976d2; font-weight:700; margin-bottom:2.2rem;">Inventory Supplies Report</h2>
+
+  <div class="date-range-container">
+    <div class="section-heading">Select Date Range</div>
+    <div style="display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap;">
+      <label style="font-weight: 500; color: #1976d2;">From:
+        <input type="date" class="rich-dropdown" [(ngModel)]="dateRangeStart" name="dateRangeStart" />
+      </label>
+      <label style="font-weight: 500; color: #1976d2;">To:
+        <input type="date" class="rich-dropdown" [(ngModel)]="dateRangeEnd" name="dateRangeEnd" />
+      </label>
+      <button type="button" class="date-btn" (click)="fetchByDateRange()" title="Apply" aria-label="Apply">
+        <!-- Bootstrap check2-circle icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#388e3c" class="bi bi-check2-circle" viewBox="0 0 16 16">
+          <path d="M2.5 8a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0zm5.5-6.5A6.5 6.5 0 1 0 14.5 8 6.5 6.5 0 0 0 8 1.5z"/>
+          <path d="M10.97 6.97a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 0 1-1.06 0l-1.5-1.5a.75.75 0 1 1 1.06-1.06l.97.97 2.47-2.47a.75.75 0 0 1 1.06 0z"/>
+        </svg>
+      </button>
+      <button *ngIf="dateRangeStart || dateRangeEnd" type="button" class="date-btn" (click)="clearDateRange()" title="Clear" aria-label="Clear">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" aria-hidden="true"><path fill="#d32f2f" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <br/>
+
+  <form class="location-form">
+    <div class="section-heading">Select Building Details</div>
+    <label>
+      Block:
+      <select class="rich-dropdown" [(ngModel)]="selectedBlock" name="block" (change)="onSelectionChange()">
+        <option value="">Select Block</option>
+        <option *ngFor="let block of blocks" [value]="block">{{ block }}</option>
+      </select>
+    </label>
+    <label>
+      Floor:
+      <select class="rich-dropdown" [(ngModel)]="selectedFloor" name="floor" (change)="onSelectionChange()">
+        <option value="">Select Floor</option>
+        <option *ngFor="let floor of floors" [value]="floor">{{ floor }}</option>
+      </select>
+    </label>
+    <label>
+      Wing:
+      <select class="rich-dropdown" [(ngModel)]="selectedWing" name="wing" (change)="onSelectionChange()">
+        <option value="">Select Wing</option>
+        <option *ngFor="let wing of wings" [value]="wing">{{ wing }}</option>
+      </select>
+    </label>
+  </form>
+
+  <div *ngIf="buildingDetails" class="report-container">
+    <div class="report-title">
+      Inventory supplies report for {{ buildingDetails.BuildingName }} | {{ buildingDetails.FloorName }} | {{ buildingDetails.WingName }}
+    </div>
+    <div class="report-title-underline"></div>
+    <div class="report-actions-row">
+      <div class="report-details">
+        <div><strong>Building:</strong> {{ buildingDetails.BuildingName }}</div>
+        <div><strong>Floor:</strong> {{ buildingDetails.FloorName }}</div>
+        <div><strong>Wing:</strong> {{ buildingDetails.WingName }}</div>
+      </div>
+      <div class="icon-buttons">
+        <button (click)="downloadAsExcel()" class="btn btn-light" title="Download Excel" style="margin-right: 0.5rem; border-radius: 50%; padding: 0.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#198754" class="bi bi-file-earmark-excel" viewBox="0 0 16 16">
+            <path d="M5.884 6.68a.5.5 0 0 1 .09.7L4.825 8l1.15 1.12a.5.5 0 1 1-.7.72L4 8.707l-1.275 1.133a.5.5 0 1 1-.7-.72L3.175 8l-1.15-1.12a.5.5 0 1 1 .7-.72L4 7.293l1.275-1.133a.5.5 0 0 1 .7.52z"/>
+            <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3.5-2V4a1 1 0 0 0 1 1h1.5L10.5 2.5zM4 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5.5H11a2 2 0 0 1-2-2V1H4z"/>
+          </svg>
+        </button>
+        <button (click)="downloadAsPDF()" class="btn btn-light" title="Download PDF" style="border-radius: 50%; padding: 0.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#dc3545" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16">
+            <path d="M5.5 7.5A.5.5 0 0 1 6 7h1.5a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5zm2.5 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+            <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3.5-2V4a1 1 0 0 0 1 1h1.5L10.5 2.5zM4 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5.5H11a2 2 0 0 1-2-2V1H4z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="showTable && items.length">
+      <table style="width: 100%; border-collapse: collapse; margin-top: 1.5rem;">
+        <thead>
+          <tr style="background: #e3f2fd;">
+            <th style="padding: 0.5rem; border: 1px solid #bdbdbd;">S.No</th>
+            <th style="padding: 0.5rem; border: 1px solid #bdbdbd;">Item Name</th>
+            <th style="padding: 0.5rem; border: 1px solid #bdbdbd;">No. of Items Available</th>
+            <th style="padding: 0.5rem; border: 1px solid #bdbdbd;">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items; let i = index">
+            <td style="padding: 0.5rem; border: 1px solid #bdbdbd;">{{ i + 1 }}</td>
+            <td style="padding: 0.5rem; border: 1px solid #bdbdbd;">{{ item.Name || item.name }}</td>
+            <td style="padding: 0.5rem; border: 1px solid #bdbdbd;">{{ item.units }}</td>
+            <td style="padding: 0.5rem; border: 1px solid #bdbdbd;">{{ item.date | date: 'yyyy-MM-dd' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error" class="ai-suggestion" style="color: #d32f2f;">{{ error }}</div>
+
+
+
+  <p *ngIf="!showTable">Generate detailed reports on supply usage, cost savings, and waste reduction for management review.</p>
+  <ul *ngIf="!showTable">
+    <li>Monthly usage trends</li>
+    <li>Cost savings breakdown</li>
+    <li>Waste reduction progress</li>
+    <li>AI-powered recommendations for further improvement</li>
+  </ul>
+  <div class="ai-suggestion" *ngIf="!showTable">
+    <strong>AI Suggestion:</strong> Export reports to share with your sustainability team.
+  </div>
+</div>

@@ -1,0 +1,24 @@
+.waste-reduction-alerts {
+  background: #fff8e1;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px #e0e0e0;
+}
+.waste-reduction-alerts h2 {
+  color: #ef6c00;
+}
+.waste-reduction-alerts .alert {
+  color: #d84315;
+  font-weight: bold;
+}
+.waste-reduction-alerts .ok {
+  color: #388e3c;
+  font-weight: bold;
+}
+.waste-reduction-alerts .ai-suggestion {
+  margin-top: 1rem;
+  background: #e3f2fd;
+  padding: 0.75rem;
+  border-left: 4px solid #1976d2;
+  border-radius: 4px;
+}
